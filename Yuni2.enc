@@ -1,0 +1,52 @@
+<?php
+
+	class Elektronik{
+		
+
+			public $jdl, $pnrbt, $nmpnls, $hal;
+			public function __construct($jdl = "Merek labtop", $pnrbt = "Type Labtop", $nmpnls = "Ukuran Layar", $hal = "Tipe Kartu Grafis"){
+				$this->jdl = $jdl;
+				$this->pnrbt = $pnrbt;
+				$this->nmpnls = $nmpnls;
+				$this->hal = $hal;
+			
+			}
+			public function getinfoBook(){
+
+				$bku = "<br>Merek Labtop : {$this->jdl}, <br>Type Labtop : {$this->pnrbt}, <br>Ukuran Layar : {$this->nmpnls}, <br>Tipe Kartu Grafis : {$this->hal}";
+
+				return $bku;		
+			}
+	}
+
+	Class BukuSatu extends Elektronik {
+
+		public function getinfoBook(){
+			$bku = "Labtop 1 : ".parent::getinfoBook();
+			return $bku;
+		
+		}
+	}
+	class BukuDua extends Elektronik{
+
+		public $rwyt;
+		public function __construct($jdl, $pnrbt, $nmpnls, $hal, $rwyt){
+			parent::__construct($jdl, $pnrbt, $nmpnls,$hal, $rwyt);
+			$this->rwyt = $rwyt;
+		}
+		public function getinfoBook(){
+
+			$bku = "Labtop 2 : ".parent::getinfoBook()."<br>Harga : {$this->rwyt}";
+			return $bku;
+		}
+	}	
+
+	$bku1 = new BukuSatu("Asus", "Asus ZenBook Pro 14", "14 inch", "NVIDIA GenForce");
+	$bku2 = new BukuDua("Acer", "Acer Aspire 3 A314", "14 inch", "UHD 600", "Rp. 3.798.000");
+	echo $bku1->getinfoBook();
+	echo "<br>";
+	echo "<br>";
+	echo $bku2->getinfoBook();
+
+
+?>
